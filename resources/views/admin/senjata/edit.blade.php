@@ -46,7 +46,7 @@
                     </div>
 
                     <button class="btn btn-primary">Update</button>
-                    <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary">Kembali</a>
+                    <a href="{{ route('senjata.index') }}" class="btn btn-secondary">Kembali</a>
 
                 </form>
 

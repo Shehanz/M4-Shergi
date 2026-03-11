@@ -20,6 +20,8 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('adminAssets/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body id="page-top">
@@ -89,6 +91,11 @@
         <!-- Page level custom scripts -->
         <script src="{{ asset('adminAssets/js/demo/chart-area-demo.js') }}"></script>
         <script src="{{ asset('adminAssets/js/demo/chart-pie-demo.js') }}"></script>
+
+        <!-- SweetAlert -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        @stack('scripts')
 
 </body>
 

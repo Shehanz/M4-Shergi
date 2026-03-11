@@ -10,8 +10,8 @@ class SenjataController extends Controller
 
     public function index()
     {
-        $senjata = Senjata::all();
-        return view('admin.dashboard', compact('senjata'));
+        $data = Senjata::all();
+        return view('admin.senjata.index', compact('data'));
     }
 
     public function create()
@@ -38,20 +38,20 @@ class SenjataController extends Controller
             'tahun_produksi' => $request->tahun_produksi
         ]);
 
-        return redirect()->route('admin.dashboard')
+        return redirect()->route('senjata.index')
             ->with('success', 'Data berhasil ditambahkan');
     }
 
     public function show($id)
     {
-        $senjata = Senjata::findOrFail($id);
-        return view('senjata.show', compact('senjata'));
+        $data = Senjata::findOrFail($id);
+        return view('senjata.show', compact('data'));
     }
 
     public function edit($id)
     {
-        $senjata = Senjata::findOrFail($id);
-        return view('admin.senjata.edit', compact('senjata'));
+        $data = Senjata::findOrFail($id);
+        return view('admin.senjata.edit', compact('data'));
     }
 
     public function update(Request $request, $id)
@@ -65,9 +65,9 @@ class SenjataController extends Controller
             'tahun_produksi' => 'required|integer|min:1800|max:' . date('Y')
         ]);
 
-        $senjata = Senjata::findOrFail($id);
+        $data = Senjata::findOrFail($id);
 
-        $senjata->update([
+        $data->update([
             'nama_senjata' => $request->nama_senjata,
             'jenis' => $request->jenis,
             'kaliber' => $request->kaliber,
@@ -75,16 +75,16 @@ class SenjataController extends Controller
             'tahun_produksi' => $request->tahun_produksi
         ]);
 
-        return redirect()->route('admin.dashboard')
+        return redirect()->route('senjata.index')
             ->with('success', 'Data berhasil diupdate');
     }
 
     public function destroy($id)
     {
-        $senjata = Senjata::findOrFail($id);
-        $senjata->delete();
+        $data = Senjata::findOrFail($id);
+        $data->delete();
 
-        return redirect()->route('admin.dashboard')
+        return redirect()->route('senjata.index')
             ->with('success', 'Data berhasil dihapus');
     }
 }
