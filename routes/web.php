@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('/', [pageController::class, 'home'])->name('home');
 Route::get('/about', [pageController::class, 'about'])->name('about');
@@ -32,3 +32,29 @@ Route::get('/terms', [pageController::class, 'terms'])->name('terms');
 Route::get('/privacy', [pageController::class, 'privacy'])->name('privacy');
 
 Route::resource('senjata', SenjataController::class);
+
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+
+    // Render view UI (hanya tampilan, bukan proses CRUD)
+    Route::get('/armada', function () {
+        return view('admin.armada.index');
+    })->name('armada.index');
+
+    Route::get('/armada/create', function () {
+        return view('admin.armada.create');
+    })->name('armada.create');
+
+    // INI YANG DIPERBAIKI - Kirim parameter $id
+    Route::get('/armada/{id}/edit', function ($id) {
+        return view('admin.armada.edit', ['id' => $id]);
+    })->name('armada.edit');
+
+    Route::get('/armada/{id}', function ($id) {
+        return view('admin.armada.show', ['id' => $id]);
+    })->name('armada.show');
+
+});
+
+Route::get('/test-web-json', function() {
+    return response()->json(['message' => 'Web route works!']);
+});

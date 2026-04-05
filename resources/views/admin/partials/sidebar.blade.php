@@ -96,11 +96,26 @@
             <span>Charts</span></a>
     </li>
 
-    <!-- Nav Item - Tables -->
+    <!-- Nav Item - Tables Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('senjata.index') }}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTables"
+            aria-expanded="true" aria-controls="collapseTables">
             <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
+            <span>Tables</span>
+        </a>
+        <div id="collapseTables" class="collapse" aria-labelledby="headingTables" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Data Master:</h6>
+                <a class="collapse-item {{ request()->routeIs('senjata.*') ? 'active' : '' }}"
+                    href="{{ route('senjata.index') }}">
+                    <i class="fas fa-gun fa-sm fa-fw mr-2"></i> Data Senjata
+                </a>
+                <a class="collapse-item {{ request()->routeIs('admin.armada.*') ? 'active' : '' }}"
+                    href="{{ route('admin.armada.index') }}">
+                    <i class="fas fa-fighter-jet fa-sm fa-fw mr-2"></i> Armada Pesawat Tempur
+                </a>
+            </div>
+        </div>
     </li>
 
     <!-- Divider -->
@@ -113,8 +128,10 @@
 
     <!-- Sidebar Message -->
     <div class="sidebar-card d-none d-lg-flex">
-        <img class="sidebar-card-illustration mb-2" src="{{ asset('adminAssets/img/undraw_rocket.svg') }}" alt="...">
-        <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!
+        <img class="sidebar-card-illustration mb-2" src="{{ asset('adminAssets/img/undraw_rocket.svg') }}"
+            alt="...">
+        <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and
+            more!
         </p>
         <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
     </div>
